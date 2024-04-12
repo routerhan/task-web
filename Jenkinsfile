@@ -32,6 +32,9 @@ pipeline {
                     git push origin dev:dev
                     """
                     }
+                    sshagent(['GITHUB_TASK_SSHKEY']) {
+                        sh "git push git@github.com:routerhan/task-web.git"
+                    }
                 }
             }
         }
