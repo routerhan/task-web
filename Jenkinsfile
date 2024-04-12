@@ -26,7 +26,7 @@ pipeline {
                     sh "git add ."
                     sh "git commit -m 'Adding version ${params.ver}.'"
                     sh "git tag -a ${params.ver} -m 'Version ${params.ver}.'"
-                    sh "git push origin main --tags"
+                    sh "git push origin dev --tags"
                 }
             }
         }
