@@ -26,12 +26,6 @@ pipeline {
                     sh "git add ."
                     sh "git commit -m 'Adding version ${params.ver}.'"
                     sh "git tag -a ${params.ver} -m 'Version ${params.ver}.'"
-                    withCredentials([sshUserPrivateKey(credentialsId: 'GITHUB_TASK_SSHKEY', keyFileVariable: 'SSH_KEY')]) {
-                    sh """
-                    GIT_SSH_COMMAND = "ssh -i $SSH_KEY"
-                    git push origin dev:dev
-                    """
-                    }
                     sshagent(['GITHUB_TASK_SSHKEY']) {
                         sh "git push git@github.com:routerhan/task-web.git"
                     }
